@@ -2,7 +2,7 @@
 }:
 let
   # default nixpkgs
-  pkgs = import sources."nixpkgs-haskell-updates" { };
+  pkgs = import sources."nixpkgs-haskell-updates" { system = "aarch64-linux"; };
 
   # gitignore.nix 
   gitignoreSource = (import sources."gitignore.nix" { inherit (pkgs) lib; }).gitignoreSource;
