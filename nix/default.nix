@@ -2,21 +2,24 @@
 }:
 let
   # default nixpkgs
-  pkgs = import sources.nixpkgs { };
+  pkgs = import sources."nixpkgs-haskell-updates" { };
 
   # gitignore.nix 
   gitignoreSource = (import sources."gitignore.nix" { inherit (pkgs) lib; }).gitignoreSource;
 
   pre-commit-hooks = (import sources."pre-commit-hooks.nix");
 
+  haskellEnv = pkgs.haskellPackages.ghcWithPackages (ps: with ps;[ ]);
+
   src = gitignoreSource ./..;
 in
 {
-  inherit pkgs src;
+  inherit pkgs src haskellEnv;
 
   # provided by shell.nix
   devTools = {
-    inherit (pkgs) niv;
+    inherit (pkgs) niv cabal-install;
+    inherit haskellEnv;
     inherit (pre-commit-hooks) pre-commit;
   };
 
