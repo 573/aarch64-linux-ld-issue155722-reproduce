@@ -35,5 +35,7 @@ in
       # generated files
       excludes = [ "^nix/sources\.nix$" ];
     };
+
+    drv = pkgs.haskellPackages.callCabal2nix "" src { };
   };
 }
