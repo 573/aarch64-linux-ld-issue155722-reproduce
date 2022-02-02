@@ -6,6 +6,6 @@ project.pkgs.mkShell {
   shellHook = ''
     ${project.ci.pre-commit-check.shellHook}
     ghc -e 'putStrLn ("Architecture: " ++ System.Info.arch)'
-    NIX_ENFORCE_PURITY=0 cabal --enable-nix new-build
+    NIX_ENFORCE_PURITY=0 cabal --enable-nix new-build --constraint 'lukko -ofd-locking' 
   '';
 }
