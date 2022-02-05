@@ -20,6 +20,7 @@ jobs:
          sudo apt-get update -q -y && sudo apt-get install -q -y qemu qemu-system-arm qemu-efi binfmt-support qemu-user-static
          mkdir -p ~/.config/nix
          echo system-features = aarch64-linux arm-linux >> ~/.config/nix/nix.conf
+         echo extra-platforms = aarch64-linux arm-linux >> ~/.config/nix/nix.conf
          # to emulate termux / nix-on-droid
          sudo chmod ugo-rw /lib
     - uses: cachix/cachix-action@v10
