@@ -19,7 +19,7 @@ jobs:
          # Platforms: linux/amd64, linux/arm64, linux/riscv64, linux/ppc64le, linux/s390x, linux/386, linux/arm/v7, linux/arm/v6
          sudo apt-get update -q -y && sudo apt-get install -q -y qemu qemu-system-arm qemu-efi binfmt-support qemu-user-static
          mkdir -p ~/.config/nix
-         echo system-features = aarch64-linux >> ~/.config/nix/nix.conf
+         echo system-features = aarch64-linux arm-linux >> ~/.config/nix/nix.conf
          # to emulate termux / nix-on-droid
          sudo chmod ugo-rw /lib
     - uses: cachix/cachix-action@v10
@@ -29,5 +29,5 @@ jobs:
         signingKey: '${{ secrets.CACHIX_SIGNING_KEY }}'
         # If you chose API tokens for write access OR if you have a private cache
         authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
-    - run: nix-build --argstr system aarch64-linux --extra-platforms aarch64-linux --argstr arch aarch64
-    - run: nix-shell --run "echo OK"
+    - run: nix-build --argstr system aarch64-linux
+    - run: nix-shell --argstr system aarch64-linux --run "echo OK"
