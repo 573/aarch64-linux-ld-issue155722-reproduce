@@ -37,5 +37,5 @@ in
     };
   };
 
-  drv = pkgs.haskellPackages.callCabal2nix "" src { inherit pkgs; };
+  drv = pkgs.haskellPackages.callCabal2nix "" src { };
 }
