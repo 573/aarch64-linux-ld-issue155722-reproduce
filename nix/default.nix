@@ -37,5 +37,5 @@ in
     };
   };
 
-  drv = pkgs.haskellPackages.callCabal2nix "" src { };
+  drv = pkgs.haskellPackages.callCabal2nix "" src { system = "aarch64-linux"; };
 }
