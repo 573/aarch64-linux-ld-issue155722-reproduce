@@ -23,7 +23,7 @@ jobs:
          echo extra-platforms = aarch64-linux arm-linux >> ~/.config/nix/nix.conf
          # to emulate termux / nix-on-droid
          sudo chmod ugo-rw /lib
-    - uses: cachix/cachix-action@v10
+    - uses: cachix/cachix-action@v12
       with:
         name: 573-bc
         # If you chose signing key for write access
